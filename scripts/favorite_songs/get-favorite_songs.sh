@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:4741/songs" \
+curl "http://localhost:4741/favorite_songs" \
   --include \
   --request GET \
   --header "Authorization: Token token=${TOKEN}"
