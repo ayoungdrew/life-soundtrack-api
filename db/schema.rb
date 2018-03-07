@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20180307165230) do
   end
 
   create_table "favorite_songs", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "song_id"
+    t.bigint "user_id", null: false
+    t.bigint "song_id", null: false
     t.text "story"
     t.integer "story_date", null: false
     t.datetime "created_at", null: false
