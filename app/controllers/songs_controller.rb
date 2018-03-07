@@ -1,5 +1,5 @@
 class SongsController < OpenReadController
-  before_action :set_song, only: [:show, :update, :destroy]
+  before_action :set_song, only: [:index, :show, :update, :destroy]
 
   # GET /songs
   def index
