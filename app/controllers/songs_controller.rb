@@ -17,10 +17,6 @@ class SongsController < OpenReadController
   def create
     @song = Song.new(song_params)
 
-    # Hope this works
-    # if Song.find()
-    # Hope that worked...
-
     if @song.save
       render json: @song, status: :created, location: @song
     else
