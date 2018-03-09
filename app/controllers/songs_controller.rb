@@ -1,4 +1,4 @@
-class SongsController < OpenReadController
+class SongsController < ApplicationController
   before_action :set_song, only: [:show, :update, :destroy]
 
   # GET /songs
@@ -46,6 +46,6 @@ class SongsController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def song_params
-      params.require(:song).permit(:name, :artist, :story)
+      params.require(:song).permit(:name, :artist)
     end
 end

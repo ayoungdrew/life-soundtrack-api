@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308172421) do
+ActiveRecord::Schema.define(version: 20180309144409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,13 +25,12 @@ ActiveRecord::Schema.define(version: 20180308172421) do
 
   create_table "favorite_songs", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "song_id", null: false
     t.text "story"
     t.integer "story_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "song_id", null: false
     t.index ["song_id"], name: "index_favorite_songs_on_song_id"
-    t.index ["user_id", "song_id", "story_date"], name: "index_favorite_songs_on_user_id_and_song_id_and_story_date", unique: true
     t.index ["user_id"], name: "index_favorite_songs_on_user_id"
   end
 
@@ -47,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180308172421) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "artist", null: false
+    t.string "name"
+    t.string "artist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "artist"], name: "index_songs_on_name_and_artist", unique: true
