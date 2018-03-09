@@ -1,4 +1,4 @@
-class PhasesController < ApplicationController
+class PhasesController < OpenReadController
   before_action :set_phase, only: [:show, :update, :destroy]
 
   # GET /phases
@@ -13,12 +13,18 @@ class PhasesController < ApplicationController
     render json: @phase.user.favorite_songs.where(story_date: @phase.start_date..@phase.end_date)
   end
 
+  # GET /phases
+  def getmyphases
+    @phases = current_user.phases.all
+    render json: @phases
+  end
+
   # POST /phases
   def create
-    @phase = Phase.new(phase_params)
-
+    @phase = current_user.phases.build(phase_params)
+    # @phase = Phase.new(phase_params)
     if @phase.save
-      render json: @phase, status: :created, location: @phase
+      render json: @phase, status: :created
     else
       render json: @phase.errors, status: :unprocessable_entity
     end
@@ -41,7 +47,8 @@ class PhasesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_phase
-      @phase = Phase.find(params[:id])
+      # @phase = Phase.find(params[:id])
+      @phase = current_user.phases.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
