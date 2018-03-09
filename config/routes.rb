@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :phases
+  resources :phases, except: %i[index]
+  # resources :phases
   resources :favorite_songs
   resources :songs
   # RESTful routes
@@ -14,9 +15,11 @@ Rails.application.routes.draw do
   delete '/sign-out' => 'users#signout'
   patch '/change-password' => 'users#changepw'
 
-  get '/songs' => 'songs#index'
-  get '/songs/:id' => 'songs#show'
-  delete '/songs/:id' => 'songs#destroy'
-  patch '/songs/:id' => 'songs#update'
-  post '/songs/' => 'songs#update'
+  get '/phases' => 'phases#getmyphases'
+
+  # get '/songs' => 'songs#index'
+  # get '/songs/:id' => 'songs#show'
+  # delete '/songs/:id' => 'songs#destroy'
+  # patch '/songs/:id' => 'songs#update'
+  # post '/songs/' => 'songs#update'
 end
