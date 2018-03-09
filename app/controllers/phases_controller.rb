@@ -1,4 +1,4 @@
-class PhasesController < OpenReadController
+class PhasesController < ProtectedController
   before_action :set_phase, only: [:show, :update, :destroy]
 
   # GET /phases
@@ -53,6 +53,6 @@ class PhasesController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def phase_params
-      params.require(:phase).permit(:user_id, :start_date, :end_date)
+      params.require(:phase).permit(:name, :user_id, :start_date, :end_date)
     end
 end
