@@ -1,4 +1,4 @@
-class SongsController < ProtectedController
+class SongsController < ApplicationController
   before_action :set_song, only: [:show, :update, :destroy]
 
   # GET /songs

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   patch '/change-password' => 'users#changepw'
 
   get '/phases' => 'phases#getmyphases'
+  # get '/phases' => 'phases#getmyphases'
 
   # get '/songs' => 'songs#index'
   # get '/songs/:id' => 'songs#show'
