@@ -1,4 +1,4 @@
-class FavoriteSongsController < ApplicationController
+class FavoriteSongsController < ProtectedController
   before_action :set_favorite_song, only: [:show, :update, :destroy]
 
   # GET /favorite_songs
