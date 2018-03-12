@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309144409) do
+ActiveRecord::Schema.define(version: 20180312141823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180309144409) do
 
   create_table "favorite_songs", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.text "story"
+    t.text "story", null: false
     t.integer "story_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20180309144409) do
   create_table "phases", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
-    t.integer "start_date"
-    t.integer "end_date"
+    t.integer "start_date", null: false
+    t.integer "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "name"], name: "index_phases_on_user_id_and_name", unique: true
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180309144409) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string "name"
-    t.string "artist"
+    t.string "name", null: false
+    t.string "artist", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "artist"], name: "index_songs_on_name_and_artist", unique: true
