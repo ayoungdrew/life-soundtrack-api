@@ -45,7 +45,6 @@ class FavoriteSongsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def favorite_song_params
-      # if faksjfbahkbjhfghb
       params.require(:favorite_song).permit(:user_id, :song_id, :story, :story_date)
     end
 end
