@@ -15,7 +15,9 @@ class FavoriteSongsController < ProtectedController
 
   # POST /favorite_songs
   def create
-    @favorite_song = FavoriteSong.new(favorite_song_params)
+    # still needs work -- needs ownership
+    @favorite_song = current_user.favorite_songs.build(favorite_song_params)
+    # @favorite_song = FavoriteSong.new(favorite_song_params)
     if @favorite_song.save
       render json: @favorite_song, status: :created, location: @favorite_song
     else
@@ -40,7 +42,8 @@ class FavoriteSongsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_favorite_song
-      @favorite_song = FavoriteSong.find(params[:id])
+      # @favorite_song = FavoriteSong.find(params[:id])
+      @favorite_song = current_user.favorite_songs.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
