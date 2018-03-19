@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :phases, except: %i[index]
   # resources :phases
   resources :favorite_songs, only: %i[create update destroy]
-  resources :songs, only: %i[create]
+  resources :songs, except: %i[update destroy]
   # RESTful routes
   resources :examples, except: %i[new edit]
   resources :users, only: %i[index show update]
