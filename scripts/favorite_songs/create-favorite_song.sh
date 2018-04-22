@@ -9,6 +9,7 @@ curl "http://localhost:4741/favorite_songs" \
     "favorite_song": {
       "user_id": "'"${USER_ID}"'",
       "song_id": "'"${SONG_ID}"'",
+      "story": "'"${STORY}"'",
       "story_date": "'"${STORY_DATE}"'"
     }
   }'
